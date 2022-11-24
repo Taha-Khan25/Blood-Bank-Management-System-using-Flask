@@ -1,0 +1,48 @@
+{% extends 'baselogin.html' %}
+{%block title%} Donor's List {%endblock title%}
+{% block form %}
+<div class="container">
+    <h1 class="display1 text-center text-light">Donor's List</h1>
+      <table class="table  table-hover my-5">
+        <thead class="table-primary">
+          {% if data|length == 0 %}
+          <div class="alert alert-danger my-5" role="alert">
+            No Records!
+          </div>
+          {% else %}
+            <tr class="table-danger">
+              <th scope="col">Donor_id</th>
+              <th scope="col">Donor's Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Dob</th>
+              <th scope="col">Weight</th>
+              <th scope="col">Age</th>
+              <th scope="col">Phone No</th>
+              <th scope="col">Bloodgroup</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for donor in data %}
+            <tr class="table-dark">
+              <td>{{donor.donor_id}}</td>
+              <td>{{donor.donorname}}</td>
+              <td>{{donor.email}}</td>
+              <td>{{donor.dob}}</td>
+              <td>{{donor.weight}} Kg</td>
+              <td>{{donor.age}}</td>
+              <td>{{donor.phoneno}}</td>
+              <td>{{donor.bloodgroup}}</td>
+              <td>
+                <!-- <a href="/update/{{data.donor_id}}" type="button" class="btn btn-primary mx-1">Update</button> -->
+                <a href="/deletedonor/{{donor.donor_id}}" type="button" class="btn btn-danger mx-1">Delete</button>
+              </td> 
+            </tr>
+            {% endfor %}
+            {% endif %}
+            </tbody>
+            <a href="/donors"><button class="btn  btn-lg btn-danger btn-block" >Add Donor</button></a>
+      </table>
+</div>
+{% endblock form%}
+

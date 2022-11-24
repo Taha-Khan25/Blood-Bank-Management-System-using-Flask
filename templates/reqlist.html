@@ -1,0 +1,50 @@
+{% extends 'baselogin.html' %}
+{%block title%} Requirements {%endblock title%}
+{% block form %}
+<div class="container">
+    <h1 class="display1 text-center text-light">Blood Requirements</h1>
+      <table class="table  table-hover my-5">
+        <thead class="table-primary">
+          {% if data|length == 0 %}
+          <div class="alert alert-danger my-5" role="alert">
+            No Records!
+
+          </div>
+          {% else %}
+            <tr class="table-danger">
+              <th scope="col">Paitent's Id</th>
+              <th scope="col">Paitent's name</th>
+              <th scope="col">DOB</th>
+              <th scope="col">Age</th>
+              <th scope="col">Phone No</th>
+              <th scope="col">Bloodgroup</th>
+              <th scope="col">Unit Required</th>
+              <th scope="col">Blood Type Required</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for bloodrequest in data %}
+            <tr class="table-dark">
+              <td>{{bloodrequest.paitent_id}}</td>
+              <td>{{bloodrequest.paitentname}}</td>
+              <td>{{bloodrequest.dob}}</td>
+              <td>{{bloodrequest.age}}</td>
+              <td>{{bloodrequest.phoneno}}</td>
+              <td>{{bloodrequest.bloodgroup}}</td>
+              <td>{{bloodrequest.unit}}</td>
+              <td>{{bloodrequest.bloodtype}}</td>
+              <td>
+                <a href="/update/{{bloodrequest.paitent_id}}" type="button" class="btn btn-primary mx-1">Update</button>
+                <a href="/deletereq/{{bloodrequest.paitent_id}}" type="button" class="btn btn-danger mx-1">Marks As Completed</button>
+              </td> 
+            </tr>
+            {% endfor %}
+            {% endif %}
+            </tbody>
+            <a href="/bloodreqst"><button class="btn  btn-lg btn-danger btn-block " >Add Requirements</button></a>
+      </table>
+</div>
+
+{% endblock form%}
+

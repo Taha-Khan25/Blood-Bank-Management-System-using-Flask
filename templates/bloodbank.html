@@ -1,0 +1,36 @@
+{% extends 'baselogin.html' %}
+{%block title%} Blood Bank {%endblock title%}
+{% block form %}
+<div class="container">
+    <h1 class="display1 text-center text-light">Donor's List</h1>
+      <table class="table  table-hover my-5">
+        <thead class="table-primary">
+          {% if data|length == 0 %}
+          <div class="alert alert-danger my-5" role="alert">
+            No Records!
+          </div>
+          {% else %}
+            <tr class="table-danger">
+              <th scope="col">Blood_ID</th>
+              <th scope="col">Bloodgroup</th>
+              <th scope="col">Unit Available</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for blood in data %}
+            <tr class="table-dark">
+              <td>{{blood.sno}}</td>
+              <td>{{blood.bloodgroup}}</td>
+              <td>{{blood.unit}}</td>
+              <td>
+                <a href="/updatebank/{{blood.sno}}" type="button" class="btn btn-primary mx-1">Update</button>
+              </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            </tbody>
+      </table>
+</div>
+{% endblock form%}
+

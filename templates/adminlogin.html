@@ -1,0 +1,36 @@
+{% extends 'baselogin.html' %}
+{% block title %} Admin Login{% endblock title %}
+{% block form %}
+
+<body class="text-center ">
+  <div class="container">
+    <img class="mb-4 rounded-circle" src="../static/assets/img/1.png" alt="" width=10% height=10%>
+    <h1 class="h2 mb-3 font-weight-normal">Please Log in</h1>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+
+
+        <form action="/adminlogin" method="post">
+          {% include "message.html" %}
+          <div class="form-group">
+            <input type="email" id="inputEmail" class="form-control" placeholder="Enter Email address" name="email" required
+              autofocus>
+          </div>
+          <div class="form-group">
+            <input type="date" id="inputPassword" class="form-control" placeholder="Password" name="dob" required>
+          </div>
+
+
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div>
+          <button class="btn btn-lg btn-danger btn-block" type="submit">Log in</button>
+          <br>
+          <a class="text-dark" href="/signup">New User? Signup </a>
+        </div>
+        <div class="col-md-4"></div>
+</body>
+{% endblock form %}
